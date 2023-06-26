@@ -1,0 +1,75 @@
+package com.SeleniumCodeTest;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.Properties;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.*;
+
+import Objects.Login;
+import Objects.SortItems;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+
+public class SwagLabs {
+	
+	WebDriver driver;
+	Properties properties;
+	public SwagLabs() throws IOException {
+		
+	
+	}
+	
+	@BeforeTest
+	public void beforeTest() throws IOException {
+		FileReader reader = new FileReader("src/test/java/fixtures/loginCredentials.properties");
+		properties = new Properties();
+		properties.load(reader);
+	
+		
+	WebDriverManager.chromedriver().setup();
+	ChromeOptions options = new ChromeOptions();
+	options.addArguments("--remote-allow-origins=*");
+	 driver = new ChromeDriver(options);
+	
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+	driver.get("https://www.saucedemo.com/");
+	
+	}
+
+	@Test
+	public void login() {
+		Login login = new Login(driver);
+		login.enterLoginCredential(properties.getProperty("userName"),properties.getProperty("password"));
+	}
+	
+	@Test
+	public void sortProducts() {
+		SortItems sortItem = new SortItems(driver);
+		sortItem.sortItems("Price (high to low)");
+		sortItem.sortItems("Name (Z to A)");
+		sortItem.sortItems("Name (A to Z)");
+		sortItem.sortItems("Price (low to high)");		
+	}
+	
+	@Test
+	public void addProductsToCart() {
+		WebElement itemName = driver.findElement(By.xpath("//div[.//div[text()='Sauce Labs Backpack']]/a/ancestor::div[@class='inventory_item_label']/following-sibling::div[@class='pricebar']/button"));
+		itemName.click();
+		Thread.sleep(9000)
+		
+				
+				//"//div[.//div[text()=\"Sauce Labs Backpack\"]]/a/ancestor::div[@class=\"inventory_item_label\"]/following-sibling::div[@class=\"pricebar\"]/button"
+	}
+	
+	@AfterTest
+	public void afterTest() {
+	//	driver.quit();
+	}
+}

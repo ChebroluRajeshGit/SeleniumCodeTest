@@ -1,0 +1,57 @@
+package com.SeleniumCodeTest;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.Properties;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.*;
+
+import Objects.Login;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+
+public class Login_test {
+	
+	WebDriver driver;
+	Properties properties;
+	public Login_test() throws IOException {
+		
+	
+	}
+	
+	@BeforeTest
+	public void beforeTest() throws IOException {
+		FileReader reader = new FileReader("/fixtures/loginCredentials.properties");
+		Properties properties = new Properties();
+		properties.load(reader);
+		
+	WebDriverManager.chromedriver().setup();
+	ChromeOptions options = new ChromeOptions();
+	options.addArguments("--remote-allow-origins=*");
+	 driver = new ChromeDriver(options);
+	
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+	driver.get("https://www.saucedemo.com/");
+	
+	}
+
+	@Test
+	public void login() {
+		System.out.println("test running....");
+		Login login = new Login(driver);
+		System.out.println(properties.getProperty("userName"));
+		System.out.println(properties.getProperty("password"));
+		login.enterLoginCredential(properties.getProperty("userName"),properties.getProperty("password"));
+		//login.enterLoginCredential("standard_user", "secret_sauce");
+		
+	}
+	
+	@AfterTest
+	public void afterTest() {
+	//	driver.quit();
+	}
+}

@@ -1,0 +1,18 @@
+package com.SeleniumCodeTest;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.BeforeTest;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+
+public class Login_test {
+	
+	WebDriver driver;
+	@BeforeTest
+	public void beforeTest() {
+	WebDriverManager.chromedriver().setup();
+	
+		
+	}
+
+}

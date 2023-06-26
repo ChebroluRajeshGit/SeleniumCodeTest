@@ -1,0 +1,11 @@
+package com.SeleniumCodeTest;
+import org.testng.*;
+
+public class Login_test {
+	
+	@BeforeTest
+	public void beforeTest() {
+		
+	}
+
+}

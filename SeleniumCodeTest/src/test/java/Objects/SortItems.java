@@ -1,0 +1,25 @@
+package Objects;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class SortItems {
+
+	WebDriver driver;
+	
+	public SortItems(WebDriver driver) {
+		this.driver = driver;
+	}
+	By productDropdown = By.className("product_sort_container");
+	By aToZ = By.tagName("az");
+	By loginButton = By.id("login-button");
+	
+public void items(String sortOption) {
+	Select openSortItemList = new Select(driver.findElement(productDropdown)); 
+	openSortItemList.selectByVisibleText(sortOption);
+	
+}
+
+
+}

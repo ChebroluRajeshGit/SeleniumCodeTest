@@ -1,0 +1,30 @@
+package com.SeleniumCodeTest;
+import java.time.Duration;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.*;
+
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+
+public class Login_test {
+	
+	WebDriver driver;
+	@BeforeTest
+	public void beforeTest() {
+	WebDriverManager.chromedriver().setup();
+	driver = new ChromeDriver();
+		
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+	driver.get("https://www.saucedemo.com/");
+	}
+
+	@Test
+	public void 
+	
+	@AfterTest
+	public void afterTest() {
+		driver.quit();
+	}
+}

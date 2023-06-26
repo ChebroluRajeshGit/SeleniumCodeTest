@@ -1,0 +1,29 @@
+
+ import java.util.*;
+public class Palindrome {
+
+	public static void main(String[] args) {
+		Palindrome pal = new Palindrome();
+		pal.verifyNumberIsPalindrom(151);
+		
+	}
+	
+	public void verifyNumberIsPalindrom(int num) {
+		int remainder = 0;
+		int sum = 0;
+		int temp = num;
+		
+		while (num >0) {
+			remainder = temp % 10;
+			sum = (sum * 10)+remainder;
+			num = num / 10;
+		}
+		
+		if(temp == sum) {
+			System.out.println("its a palindrome");
+		}
+		else {
+			System.out.println("its not a palindrome");
+		}
+	}
+}

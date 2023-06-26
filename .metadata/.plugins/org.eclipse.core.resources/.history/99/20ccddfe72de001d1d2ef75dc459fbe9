@@ -1,0 +1,32 @@
+package testPackage;
+
+public class CountNumberOfDigits {
+public static void main(String[] args) {
+	int num= 221988;
+	int count =0;
+	
+	
+	while (num > 0) {
+		num = num /10;
+		count ++;
+	}
+	
+	System.out.println("count "+ count);
+	
+	int evenCount = 0;
+	int oddCount = 0;
+	int remainder;
+	
+	while(num > 0) {
+		remainder = num % 10;
+		if( remainder / 2 == 0)
+			evenCount++;
+		else {
+			oddCount++;
+		}
+		num = num / 10;
+	}
+	System.out.println("even count : "+evenCount);
+	System.out.println("odd count : "+oddCount);
+}
+}

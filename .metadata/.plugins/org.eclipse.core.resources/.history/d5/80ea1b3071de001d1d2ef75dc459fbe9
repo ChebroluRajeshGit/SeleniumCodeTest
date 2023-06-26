@@ -1,0 +1,45 @@
+package testPackage;
+
+ import java.util.*;
+public class Palindrome {
+
+	public static void main(String[] args) {
+		Palindrome pal = new Palindrome();
+		pal.verifyNumberIsPalindrom(151);
+		
+	}
+	// First we need to declare three variable one is remainder =0, sum = 0 , temp. assign the input number to temp.
+	//declare a while loop num > 0 
+	// remainder = (num % 10) --> (151 % 10) --> 1
+	// sum = (sum * 10)+remainder; --  (0 * 10)+1- -->1
+	// num = num / 10; (151 /10) --> 15
+	//15 > 0
+	//remainder = (num % 10) --> (15 % 10) --> 5
+	// sum = (sum * 10)+remainder -- > (1 * 10)+ 5 -> 15
+	//num = 15 / 10 --> 1
+	// while (1 > 0)
+	//remainder = (num % 10) -- > 0
+	//sum = (sum * 10) + remainder --> (15 * 10) +1 --> 151
+	//num = (num /10)
+	
+	
+	public void verifyNumberIsPalindrom(int num) {
+		int remainder = 0;
+		int sum = 0;
+		int temp ;
+		 temp = num;
+		 
+		while (num >0) {
+			remainder = num % 10;
+			sum = (sum * 10)+remainder;
+			num = num / 10;
+		}
+		
+		if(temp == sum) {
+			System.out.println("its a palindrome");
+		}
+		else {
+			System.out.println("its not a palindrome");
+		}
+	}
+}

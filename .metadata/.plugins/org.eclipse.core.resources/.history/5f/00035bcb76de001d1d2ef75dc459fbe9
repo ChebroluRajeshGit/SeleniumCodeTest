@@ -1,0 +1,66 @@
+package testPackage;
+
+public class CountNumberOfDigits {
+	public static void main(String[] args) {
+		int num = 221988;
+		int count = 0;
+
+		while (num > 0) {
+			num = num / 10;
+			count++;
+		}
+
+		System.out.println("count " + count);
+		int inputNumber = 221988;
+		int evenCount = 0;
+		int oddCount = 0;
+		int remainder;
+
+		while (inputNumber > 0) {
+			remainder = inputNumber % 10;
+
+			if (remainder % 2 == 0) {
+			//	System.out.println("inside if");
+				evenCount++;
+
+			} else {
+				oddCount++;
+			}
+			inputNumber = inputNumber / 10;
+			//System.out.println("input num: " + inputNumber);
+		}
+		System.out.println("even count : " + evenCount);
+		System.out.println("odd count : " + oddCount);
+		
+		int num2 = 101;
+		int remain = 0;
+		int temp =0;
+		int sum  = 0;
+		
+		while(num2 > 0) {
+			remain = (num2 % 10); //(100 % 10 =>  )
+			//System.out.println("remain: "+remain);
+			sum = (sum * 10)+ remain;
+		//	System.out.println("Sum: "+sum);
+			num2 = (num2 / 10);
+			temp = temp + sum;
+		}
+		System.out.println("total sum : "+temp);
+		
+		int n1 =0 ;
+		int n2 =0;
+		int tempSum = 0;
+		
+		for( int i = 2 ; i<=10; i++) {
+			
+			tempSum = n1 + n2;
+			System.out.print(tempSum);
+			n1 = n2;
+			n2 = tempSum + i;
+			
+		}
+		
+		//System.out.println("n2: "+n2);
+	}
+	
+}
